@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="col-sm-4 col-xs-12">
+        <h3>Create a Quiz Room</h3>
+
+        <div class="infa">
+            <ul class="list-group">
+                <h4>
+                    Creating a Room is simples  
+                </h4 >
+                <hr />
+
+                <li class="list-group-item list-group-item-info">
+                    Room name so people can find it
+                </li>
+                <br />
+                <li class="list-group-item list-group-item-info">
+                    Admin Password so you can control the Quiz
+                </li>
+                <br />
+
+                <li class="list-group-item list-group-item-info">
+                    Room password if you would like to keep it private
+                </li>
+                <br />
+
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-8 col-xs-12">
+        <div id="logbox">
+            <class id="create">
+                <h3>Create your Quiz Room</h3>
+				 <input data-bind="value: createModel.name" placeholder="Room Name" class="input pass"/>
+				 <input data-bind="value: createModel.adminpass" placeholder="Admin Password" class="input pass"/>
+				 <input data-bind="value: createModel.roompass" placeholder="Room Password" class="input pass"/>
+                 <input data-bind="click: create" type="submit" value="Create!" class="inputButton"/>
+            </class>
+        </div>
+    </div>
+</div>

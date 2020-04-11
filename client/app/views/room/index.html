@@ -1,0 +1,41 @@
+<h1>Welcome to the <span data-bind="text: displayName"></span> quiz room!</h1>
+
+<h4>Round <span data-bind="text: round.number"></span></h4>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-8">
+    <div class="panel panel-primary"> 
+      <div class="panel-heading"> 
+        <h3 class="panel-title">Question # <span data-bind="text: currentQuestion.number"></span></h3> 
+      </div> 
+      <div class="panel-body">
+        <div class="question">
+          <h3 data-bind="text: currentQuestion.question"></h3>
+          </div>
+          <form action="">
+            <label for="answer">Your answer: </label> 
+            <input class="input pass" data-bind="value: answer" id="answer" name="answer" autocomplete="off"/>
+            <button class="inputButton btn-block" data-bind="click: sendAnswer">Send</button>
+        </form>
+      </div> 
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-4">
+    <div class="panel panel-primary"> 
+      <div class="panel-heading"> 
+        <h3 class="panel-title">Previous Questions</h3> 
+      </div> 
+      <div class="panel-body">
+        <ul class="list-group" data-bind="foreach: previousQuestions ">
+          <li class="list-group-item list-count" data-bind="click: $parent.showQuestion.bind($data), text: $data.question">
+          </li>
+        </ul>
+      </div> 
+    </div>
+  </div>
+</div>
+<!-- 
+
+// TODO: when Round Over
+<button data-bind="click : populateQuestions">STart Next Round</button>
+<button data-bind="click : nextQuestion">Next Question Trigger</button> -->

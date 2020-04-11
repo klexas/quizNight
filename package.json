@@ -1,0 +1,22 @@
+{
+  "name": "quiznight",
+  "version": "0.0.1",
+  "description": "Quiz night room with WebRTC",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "quicknight",
+    "chatroom",
+    "webrtc"
+  ],
+  "author": "iam@adamrobins.com",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "socket.io": "^2.3.0"
+  }
+}
