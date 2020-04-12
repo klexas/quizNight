@@ -16,7 +16,7 @@ define(['plugins/http', 'durandal/app', 'knockout', 'plugins/router', 'socket'],
         activate: function (room) {
             console.log('Entering Admin for room : ' + room);
         },
-        compositionComplete: function(){
+        compositionComplete: function() {
             self.websocket.on('chat message', function(msg) {
                 $('#messages').append($('<li>').text(msg));
             });

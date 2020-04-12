@@ -1,6 +1,6 @@
-<h1>Welcome to the <span data-bind="text: displayName"></span> quiz room!</h1>
+<h1><span data-bind="text: displayName"></span> Quiz Room</h1>
 
-<h4>Round <span data-bind="text: round.number"></span></h4>
+<h4>Team Name:  <span data-bind="text: teamName"></span></h4>
 
 <div class="row">
   <div class="col-xs-12 col-sm-8">
@@ -34,6 +34,24 @@
     </div>
   </div>
 </div>
+
+<div id="addTeam" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Select a Team Name</h4>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="input pass" data-bind="value: teamName"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-bind="click: setTeam" class="btn btn-primary">Set</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- 
 
 // TODO: when Round Over
