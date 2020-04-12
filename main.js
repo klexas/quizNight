@@ -5,6 +5,11 @@ var cors = require('cors');
 var io = require('socket.io')(6970, {'transports': ['websocket', 'polling']});
 var socketConnectionPool = []; // Sure there is a better way to do this 
 
+//TODO: Add in a dat service layer for storage.
+// For the moment lets store the document in the FS 
+console.warn("NB : This is DEBUG mode only, files will be stored in play JSON.");
+var dataStoreLocation =  __dirname + '/data';
+
 io.on('connection', function(socket) {
     socket.on('chat message', function(msg){
         console.log('message: ' + msg);
@@ -58,6 +63,7 @@ app.use(express.static(__dirname + '/client'));
 // app.get('/', ((req, res)=> {
 //     res.status(500).send('Okay boomer.');
 // }));
+//
 
 // Start
 app.listen(config.connections.entry.port, (() => {

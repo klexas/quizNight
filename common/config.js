@@ -1,3 +1,5 @@
+var debug_mode = true;
+
 const expressOptions = {
     dotfiles: 'ignore',
     etag: false,
@@ -18,6 +20,13 @@ const connections = {
         hostname: 'localhost',
         port: 6968
     }
+}
+
+fs = ()=>{
+    if(this.debug_mode)
+        return {
+            dir: '../data'
+        }
 }
 
 module.exports = { 

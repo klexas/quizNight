@@ -26,14 +26,17 @@ define(['plugins/http', 'durandal/app', 'knockout', 'plugins/router', 'socket'],
             return true;
         },
         addQuestion: function() {
-            self.websocket.emit('chat message', $('#m').val());
-            $('#m').val('');
+            self.websocket.emit('chat message', self.question());
             // TODO: sanitize and see if valid
             self.questionList.push(self.question());
+            self.question('');
             return false;
         },
         nextQuestion: function(){
             self.websocket.emit('next_message');
+        },
+        saveQuestion: function(){
+            // TODO: DataService Layer
         }
     };
 });
