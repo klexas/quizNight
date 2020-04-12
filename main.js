@@ -26,6 +26,12 @@ io.on('connection', function(socket) {
         io.emit('new_question', JSON.stringify(question));
     });
 
+    socket.on('force_message', (question)=>{
+        console.log('forcing question');
+        console.log(question);
+        io.emit('new_question', question);
+    });
+
     socket.on('subscribe', function(room) {
         if (socketConnectionPool.indexOf(room) < 0) {
             socketConnectionPool.push(room);

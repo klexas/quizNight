@@ -15,8 +15,10 @@ function (http, app, ko, router, socket, teamService) {
             roompass: ''
         },
         activate: function (room) {
-            if(room && teamService.isAdmin(room))
+            if(room && teamService.isAdmin(room)){
                 console.log('Entering Admin for room : ' + room);
+                this.displayName = room;
+            }
         },
         compositionComplete: function() {
             self.websocket.on('chat message', function(msg) {
@@ -38,6 +40,15 @@ function (http, app, ko, router, socket, teamService) {
         },
         nextQuestion: function(){
             self.websocket.emit('next_message');
+        },
+        // For Live Q & A
+        forceQuestion: function(){
+            let question = {
+                question: self.question.question(),
+                answer: self.question.answer()
+            };
+
+            self.websocket.emit('force_message', JSON.stringify(question));
         },
         saveQuestion: function(){
             // TODO: DataService Layer
