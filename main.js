@@ -24,9 +24,6 @@ io.on('connection', function(socket) {
     socket.on('subscribe', function(room) {
         if (socketConnectionPool.indexOf(room) < 0) {
             socketConnectionPool.push(room);
-            console.log('Joining Quiz room ', room);
-            console.log("ROOMS OPEN : " + socketConnectionPool.length);
-            console.log('here kinda');
             socket.join(room);
             socket.send('joined', room);
             console.log(room);
