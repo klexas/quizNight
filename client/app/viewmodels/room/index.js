@@ -1,6 +1,7 @@
 define(['services/room', 'durandal/app', 'knockout', 'socket', 'plugins/router', 'services/team'], 
   function (roomService, app, ko, io, router, teamService) {
     var self = this;
+    self.teamName = ko.observable();
     self.socket = {};
     self.answer = ko.observable();
     self.players = ko.observableArray([]);
@@ -22,7 +23,7 @@ define(['services/room', 'durandal/app', 'knockout', 'socket', 'plugins/router',
         displayName: 'Room',
         teamName: ko.observable(''),
         room_id: 0,
-        teams: [{id:0, name: ''}],
+        teams: [{id: 0, name: ''}],
         people: [{ team: '', name: ''}],
         pass: 'admin',
         currentRound: ko.observable(1),
@@ -42,7 +43,7 @@ define(['services/room', 'durandal/app', 'knockout', 'socket', 'plugins/router',
             app.showMessage('Room does not exist, please check details or create a new one.', 'Room Error', ['M\'kay']);
             return false;
           }
-          
+
           // check if there is a team name already created
           this.displayName += ' ' + id;
           self.room_id = id;
@@ -73,7 +74,7 @@ define(['services/room', 'durandal/app', 'knockout', 'socket', 'plugins/router',
             console.log('Someone is in!', "LETS PLAY!!");
           });
 
-          // Check team after DOM loaded
+          // Check team after DOM loaded because we need the modal loaded
           // check is the team set
           if(!teamService.isTeamSet()) {
             // Show team input name diag
@@ -93,8 +94,8 @@ define(['services/room', 'durandal/app', 'knockout', 'socket', 'plugins/router',
             return true;
         },
         setTeam() {
-          teamService.setTeamName(self.team);
-          this.teamName(teamService.getTeam().name);
+          teamService.setTeamName(this.teamName());
+          // this.teamName(teamService.getTeam().name);
           
           $('#addTeam').modal('hide');
         },

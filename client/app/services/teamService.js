@@ -13,11 +13,11 @@ define(['plugins/http', 'durandal/app', 'knockout', 'socket'], function (http, a
             let teamDetails = {
                 name: teamName
             };
-
-            localStorage.setItem('team', JSON.stringify(teamDetails));
+            if(teamDetails.name)
+                localStorage.setItem('team', JSON.stringify(teamDetails));
         },
         isTeamSet: ()=>{
-            return (localStorage.getItem('team') != undefined);
+            return (JSON.parse(localStorage.getItem('team')) != undefined);
         }
     }
 });
