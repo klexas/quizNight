@@ -1,12 +1,13 @@
-define(['plugins/http', 'durandal/app', 'knockout', 'plugins/router', 'socket'], function (http, app, ko, router, socket) {
+define(['plugins/http', 'durandal/app', 'knockout', 'plugins/router', 'socket', 'services/team'], 
+function (http, app, ko, router, socket, teamService) {
     var self = this;
     self.websocket = socket("http://localhost:6970");
     self.questionList = ko.observableArray([]);
     self.currentRound = ko.observable(1);
-    self.question = ko.observable({
-        question: '',
-        answer: ''
-    });
+    self.question = {
+        question: ko.observable(),
+        answer: ko.observable()
+    };
     return {
         displayName: 'Admin',
         createModel: {
@@ -14,7 +15,8 @@ define(['plugins/http', 'durandal/app', 'knockout', 'plugins/router', 'socket'],
             roompass: ''
         },
         activate: function (room) {
-            console.log('Entering Admin for room : ' + room);
+            if(room && teamService.isAdmin(room))
+                console.log('Entering Admin for room : ' + room);
         },
         compositionComplete: function() {
             self.websocket.on('chat message', function(msg) {
@@ -26,10 +28,12 @@ define(['plugins/http', 'durandal/app', 'knockout', 'plugins/router', 'socket'],
             return true;
         },
         addQuestion: function() {
-            self.websocket.emit('chat message', self.question());
             // TODO: sanitize and see if valid
-            self.questionList.push(self.question());
-            self.question('');
+            // With Question & answer - store to FS
+            self.questionList.push({
+                question: self.question.question(),
+                answer: self.question.answer()
+            });
             return false;
         },
         nextQuestion: function(){
