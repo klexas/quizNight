@@ -1,9 +1,20 @@
 <h1>Admin</h1>
+<h2>Channel : <span data-bind="text: displayName"></span></h2>
+<div class="row">
+    <div class="cox-xs-12 col-sm-8">
+        <label for="question">Question</label>
+        <input  name="answer" type="text" name="question" class="input pass" data-bind="value: question.question"/> 
+        <label for="answer">Answer</label>
+        <input type="text" name="answer" class="input pass" data-bind="value: question.answer"/>
+        <button class="inputButton" data-bind="click: addQuestion">Add To Quiz</button>
 
-<ul id="messages"></ul>
-<form action="">
-    <input id="m" autocomplete="off"/><button data-bind="click: addQuestion">Send</button>
-</form>
+    </div>
+    <div class="cox-xs-12 col-sm-4">
+        <ul  class="list-group"  data-bind="foreach: questionList">
+            <li class="list-group-item list-count" data-bind="text: $data.question"></li>
+        </ul>
+    </div>
+</div>
 
-<button data-bind='click: nextQuestion'></button>
+<button class="inputButton" data-bind='click: forceQuestion'>Play next Question</button>
 
