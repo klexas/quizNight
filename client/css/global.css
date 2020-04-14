@@ -1,6 +1,6 @@
-﻿ body{
-     background-color: #181a1b;
- }
+﻿html, body, input, textarea, select, button {
+    background-color: #181a1b;
+}
  .main-wrapper {
      padding:20px;
  }
