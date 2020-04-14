@@ -1,26 +1,15 @@
 <h1>Join a QuizNight Room</h1>
 
 <div class="row">
-    <div class="col-xs-12 col-sm-4 col-sm-offset-1">
-        <form class="form-inline">
-            <div class="form-group">
-              <label class="sr-only" for="exampleInputAmount">Room ID</label>
-              <div class="input-group">
-                <div class="input-group-addon">#</div>
-                <input type="text" class="form-control" id="exampleInputAmount" 
-                data-bind="value:room.id" placeholder="Room number">
-              </div>
-              <br />
-              <div class="input-group">
-                <div class="input-group-addon">Password</div>
-                <input data-bind="value:room.secret" type="text" class="form-control" id="exampleInputAmount" placeholder="Password">
-              </div>
-              <br />
-
-            </div>
-
-            <button class="inputButton" type="submit" data-bind="click: join" class="btn btn-primary">Join</button>
-          </form>
+    <div class="col-xs-12 col-sm-4 col-xs-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">Join Room</div>
+        <div class="panel-body">
+          <input data-bind="value: room.id" placeholder="Room Name" class="input pass"/>
+          <input data-bind="value: room.secret" placeholder="Password" type="password" class="input pass"/>
+          <button class="inputButton" type="submit" data-bind="click: join" class="btn btn-primary">Join</button>
+        </div>
+      </div>  
     </div>
 </div>
 
