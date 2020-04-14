@@ -15,12 +15,12 @@ const expressOptions = {
 // TODO: Something like a SW Load balancer / Proxy
 const connections = {
     entry: {
-        hostname: 'localhost', // hostname / IP address
+        hostname: 'adamrobins.com', // hostname / IP address
         port: 6969,
         websocketPort: 6970
     },
     user: {
-        hostname: 'localhost',
+        hostname: 'adamrobins.com',
         port: 6968
     }
 };

@@ -7,7 +7,7 @@
         'knockout': '../lib/knockout/knockout-3.4.0',
         'bootstrap': '../lib/bootstrap/js/bootstrap',
         'jquery': '../lib/jquery/jquery-1.9.1',
-        'socket': 'http://localhost:6970/socket.io/socket.io',
+        'socket': 'http://adamrobins.com:6970/socket.io/socket.io',
         // Services 
         'services/room': './services/room/roomService',
         'services/team': './services/teamService'

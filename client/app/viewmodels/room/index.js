@@ -6,7 +6,7 @@ define(['services/room', 'durandal/app', 'knockout', 'socket', 'plugins/router',
     self.answer = ko.observable();
     self.players = ko.observableArray([]);
     // Domain Config & add SSL 
-    self.socket = io("http://localhost:6970/", {'transports': ['websocket', 'polling'], 'secure': false});
+    self.socket = io("http://adamrobins.com:6970/", {'transports': ['websocket', 'polling'], 'secure': false});
     self.currentQuestion = {
       number: ko.observable(-1),
       question: ko.observable("")

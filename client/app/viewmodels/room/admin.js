@@ -1,7 +1,7 @@
 define(['plugins/http', 'durandal/app', 'knockout', 'plugins/router', 'socket', 'services/team'], 
 function (http, app, ko, router, socket, teamService) {
     var self = this;
-    self.websocket = socket("http://localhost:6970");
+    self.websocket = socket("http://adamrobins.com:6970");
     self.questionList = ko.observableArray([]);
     self.currentRound = ko.observable(1);
     self.question = {
