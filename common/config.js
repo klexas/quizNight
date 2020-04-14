@@ -40,5 +40,6 @@ const connections = {
 module.exports = { 
     expressOptions, 
     connections,
-    fs
+    fs,
+    debug_mode
 }

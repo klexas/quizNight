@@ -72,6 +72,13 @@ app.get('/api/room/exists/:room_id', (async (req, res) => {
     // TODO: Sanitize req 
     let room_id = req.params['room_id'];
     console.log(room_id);
+    // TODO: Do not use this in prod. It's reading file system
+    // replace fileService with data access service.
+    if(config.debug_mode){
+        console.warn('!!**You better be sure what you are doing, the http endpoint can read your filesystem.');
+        console.error('!!**You better be sure what you are doing, the http endpoint can read your filesystem.');
+        console.log('!!**You better be sure what you are doing, the http endpoint can read your filesystem.');
+    }
     var result = await fileService.exists(room_id);
     console.log(result);
     if (result)
