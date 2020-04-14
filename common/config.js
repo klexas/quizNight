@@ -1,4 +1,7 @@
 var debug_mode = true;
+var file_settings = {
+    storagePath: 'c:\\tmp\\'
+};
 
 const expressOptions = {
     dotfiles: 'ignore',
@@ -20,16 +23,22 @@ const connections = {
         hostname: 'localhost',
         port: 6968
     }
-}
+};
 
-fs = ()=>{
-    if(this.debug_mode)
+
+// Probably best not to edit this
+// TODO: Will be moved to data access layer area
+ fs = function(){
+    if (debug_mode)
         return {
-            dir: '../data'
+            dir: file_settings.storagePath
         }
-}
+    else
+        throw Error('Not in debug mode. Do not use this method. ');
+    };
 
 module.exports = { 
     expressOptions, 
-    connections
+    connections,
+    fs
 }

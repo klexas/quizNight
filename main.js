@@ -1,4 +1,5 @@
 var config = require('./common/config');
+var fileService = require('./services/fileService');
 var express = require('express');
 var cors = require('cors');
 // Socket.io config
@@ -66,10 +67,19 @@ app.use(cors());
 
 app.use(express.static(__dirname + '/client'));
 
-// app.get('/', ((req, res)=> {
-//     res.status(500).send('Okay boomer.');
-// }));
-//
+app.get('/api/room/exists/:room_id', (async (req, res) => {
+    // Don't do this method for anything sensitive
+    // TODO: Sanitize req 
+    let room_id = req.params['room_id'];
+    console.log(room_id);
+    var result = await fileService.exists(room_id);
+    console.log(result);
+    if (result)
+        res.status(200).send('Exists'); 
+    else
+        res.status(200).send('Okay boomer.');
+}));
+
 
 // Start
 app.listen(config.connections.entry.port, (() => {
