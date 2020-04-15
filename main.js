@@ -1,5 +1,6 @@
 var config = require('./common/config');
 var fileService = require('./services/fileService');
+var statusService = require('./common/errors');
 var express = require('express');
 var cors = require('cors');
 // Socket.io config
@@ -68,6 +69,7 @@ app.use(cors());
 app.use(express.static(__dirname + '/client'));
 
 app.get('/api/room/exists/:room_id', (async (req, res) => {
+    var resCode = 500;
     // Don't do this method for anything sensitive
     // TODO: Sanitize req 
     let room_id = req.params['room_id'];
@@ -79,12 +81,24 @@ app.get('/api/room/exists/:room_id', (async (req, res) => {
         console.error('!!**You better be sure what you are doing, the http endpoint can read your filesystem.');
         console.log('!!**You better be sure what you are doing, the http endpoint can read your filesystem.');
     }
-    var result = await fileService.exists(room_id);
-    console.log(result);
-    if (result)
-        res.status(200).send('Exists'); 
-    else
-        res.status(200).send('Okay boomer.');
+    try {
+        // Do something ?
+        if(await fileService.exists(room_id))
+            resCode = 200;
+        else
+            resCode = 404;
+    } catch (error) {
+        console.log('Must have done something really bad to end up here');
+        console.error(error);
+        // TODO: Some proper logging
+        resCode = 69; // Al mare ;)
+    }
+    finally{
+        let message = statusService.report(resCode);
+        console.log(message);
+        res.status(resCode).send(message);
+    }
+    
 }));
 
 

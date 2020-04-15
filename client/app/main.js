@@ -10,7 +10,10 @@
         'socket': 'http://localhost:6970/socket.io/socket.io',
         // Services 
         'services/room': './services/room/roomService',
-        'services/team': './services/teamService'
+        'services/team': './services/teamService',
+        'services/data': './services/dataService',
+        // Config
+        'config': '.config'
     },
     shim: {
         'bootstrap': {
