@@ -25,6 +25,14 @@ npm install && node main
 By default, node will host the static content of `client/` on the address : `http://{config.host}:6969`
 
 
+## Developing
+
+Probably dont need to mention, but useful tools indlude: 
+ - [x] VSCode/Sublime/Atom - whatever editor you like. 
+ - [x] nodemon - usefull for reloading on changes, as this is vanilla JS there is no transpile so it's nice. 
+   - `npm install -g nodemon` - Then run your node with `nodemon script` instead of `node script`
+ - [x] JSLint - Usefull for the IDE you're on, but again, with JS Vanilla being Duck typing, it's more useful for formatting and testing. 
+
 # Note : 
 There is a static Websocket connection string in the client/app area. Please be sure to update this to your nodeJs websocket location. 
 
