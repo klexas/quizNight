@@ -1,4 +1,7 @@
 var debug_mode = true;
+
+// TODO: This is mostly just for storage, pictures within questions etc. 
+// Note : this folder is used as Data store in debug mode/filesystem DB mode. 
 var file_settings = {
     storagePath: 'c:\\tmp\\'
 };
@@ -11,6 +14,17 @@ const expressOptions = {
     maxAge: '1d',
     redirect: false
 };
+
+// This is just a All connection types will need to use this same format
+// TODO: WIP : Leaving for later, but before will be Filesystem
+const databaseOptions = {
+    host: 'localhost',
+    port: '',
+    databaseName: '',
+    username: '',
+    password: '', // Optional
+    prefix: '' // Optional
+}
 
 // TODO: Something like a SW Load balancer / Proxy
 const connections = {
