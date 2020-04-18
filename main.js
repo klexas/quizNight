@@ -68,6 +68,7 @@ app.use(cors());
 
 app.use(express.static(__dirname + '/client'));
 
+
 app.get('/api/room/exists/:room_id', (async (req, res) => {
     var resCode = 500;
     // Don't do this method for anything sensitive
@@ -98,7 +99,6 @@ app.get('/api/room/exists/:room_id', (async (req, res) => {
         console.log(message);
         res.status(resCode).send(message);
     }
-    
 }));
 
 

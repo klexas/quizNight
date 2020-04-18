@@ -22,8 +22,6 @@ define(['plugins/http', 'durandal/app', 'knockout', 'plugins/router', 'services/
                 return;
             }
             else{
-                // Create room,
-                // lol roomService sounds ossum
                 // TODO: cosa
                 console.log('lucky guy/girl, you got a room. ');
                 router.navigate('room/' + this.createModel.name, { trigger: true, replace: true }); 
